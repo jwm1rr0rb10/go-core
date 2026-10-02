@@ -1,0 +1,29 @@
+version: "2"
+
+linters:
+  enable:
+    - bodyclose
+    - errorlint
+    - gocritic
+    - gosec
+    - misspell
+    - noctx
+    - prealloc
+    - revive
+    - unconvert
+    - unparam
+  settings:
+    revive:
+      rules:
+        - name: exported
+        - name: var-naming
+          disabled: true # google_uuid package name is kept for compatibility
+  exclusions:
+    rules:
+      - path: _test\.go
+        linters: [gosec, noctx, unparam]
+
+formatters:
+  enable:
+    - gofmt
+    - goimports
